@@ -2,16 +2,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{% block title %}{% endblock %}</title>
-  <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 <body>
-  <div id="header">
-    <span class="logo">Movies</span>
-  </div>
-  <div id="content">
+    <div id="header">
+    <span class="logo">Bookmarks</span>
+    {% if request.user.is_authenticated %}
+        <ul class="menu">
+        <li {% if section == "dashboard" %}class="selected"{% endif %}>
+            <a href="{% url "dashboard" %}">My dashboard</a>
+        </li>
+        <li {% if section == "images" %}class="selected"{% endif %}>
+            <a href="#">Images</a>
+        </li>
+        <li {% if section == "people" %}class="selected"{% endif %}>
+            <a href="#">People</a>
+        </li>
+        </ul>
+    {% endif %}
+    <span class="user">
+        {% if request.user.is_authenticated %}
+        Hello {{ request.user.first_name }},
+        <form action="{% url 'logout' %}" method="post" class="inline"> 
+        {% csrf_token %} {# ABSOLUTELY CRUCIAL FOR SECURITY #}
+        <button type="submit" class="text-blue-500 hover:underline cursor-pointer bg-transparent border-none p-0 m-0">
+            Logout
+        </button>
+        </form>
+        {% else %}
+        <a href="{% url "login" %}">Log-in</a>
+        {% endif %}
+    </span>
+    </div>
+
+    <div id="content">
     {% block content %}
     {% endblock %}
-  </div>
+    </div>
 </body>
 </html>
