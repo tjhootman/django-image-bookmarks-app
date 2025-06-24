@@ -41,7 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'movies.apps.MoviesConfig',
 ]
+
+
+INSTALLED_APPS = [
+    # ...
+    'images.apps.ImagesConfig',
+]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
