@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Popular Movies{% endblock %}
+{% block description %}Explore the latest popular movies and discover new favorites.{% endblock %}
+{% block content %}
+    <h1 class="text-2xl font-bold mb-4">Popular Movies</h1>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {% for movie in movies %}
+            <li class="bg-white rounded-lg shadow-md overflow-hidden">
+                <a href="{% url 'movie_detail' movie.id %}" class="block">
+                    <img src="{{ movie.poster_url }}" alt="{{ movie.title }}" class="w-full h-auto object-cover">
+                    <div class="p-4">
+                        <p class="text-lg font-semibold">{{ movie.title }}</p>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ movie.title }} | Movie Details{% endblock %}
+{% block description %}Learn more about {{ movie.title }}. Read the synopsis, view recommendations, and explore similar movies.{% endblock %}
+
+{% block content %}
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-3xl font-bold mb-4">{{ movie.title }}</h1>
+        <div class="flex items-start mb-6">
+            <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-48 h-auto rounded-md shadow-md mr-6">
+            <div>
+                <p class="text-gray-700 mb-4">{{ movie.overview }}</p>
+                <h2 class="text-xl font-semibold mb-2">Recommendations</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    {% for rec in recommendations %}
+                        <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden">
+                            <a href="{% url 'movie_detail' rec.id %}" class="block p-2 text-center">
+                                <img src="https://image.tmdb.org/t/p/w500{{ rec.poster_path }}" alt="{{ rec.title }}" class="w-full h-auto object-cover rounded-t-md">
+                                <p class="text-sm mt-2">{{ rec.title }}</p>
+                            </a>
+                        </div>
+                    {% empty %}
+                        <p class="text-gray-500">No recommendations available.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
