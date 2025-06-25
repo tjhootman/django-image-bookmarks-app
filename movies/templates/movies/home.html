@@ -2,6 +2,7 @@
 {% block title %}Popular Movies{% endblock %}
 {% block description %}Explore the latest popular movies and discover new favorites.{% endblock %}
 {% block content %}
+<div class="bg-white rounded-lg shadow-md p-6">
     <h1 class="text-2xl font-bold mb-4">Popular Movies</h1>
     <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {% for movie in movies %}
@@ -15,4 +16,5 @@
             </li>
         {% endfor %}
     </ul>
+</div>
 {% endblock %}
