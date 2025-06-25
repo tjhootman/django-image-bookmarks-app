@@ -38,9 +38,9 @@ ol {
 #header {
     padding:10px 100px;
     font-size:14px;
-    background:#12c064;
+    background:gray;
     color:#fff;
-    border-bottom:4px solid #1cdf78;
+    border-bottom:4px solid darkgray;
     overflow:auto;
 }
 
@@ -274,4 +274,82 @@ img.user-detail {
 .action .date {
     font-style:italic;
     color:#ccc;
+}
+
+/* Basic styling for the footer */
+footer {
+    display: flex; /* Use flexbox for easy alignment */
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; /* Center items horizontally */
+    padding: 2rem 1rem; /* Generous padding top/bottom, less on sides */
+    background-color: #1a202c; /* Dark background, adjust as needed */
+    color: #e2e8f0; /* Light text color for contrast */
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Modern, readable font stack */
+    font-size: 0.95rem; /* Slightly smaller text */
+    text-align: center; /* Ensure text is centered */
+    border-top: 1px solid #2d3748; /* Subtle top border */
+}
+
+/* Styling for the paragraph */
+footer p {
+    margin-bottom: 0.75rem; /* Space between text and logo */
+    line-height: 1.5; /* Good line height for readability */
+}
+
+/* Styling for the link containing the image */
+footer a {
+    display: inline-block; /* Allows for proper margin/padding on the link */
+    /* No text decoration needed as it's an image link */
+}
+
+/* Styling for the TMDb logo image */
+footer img {
+    height: 2.5rem; /* Slightly larger height for better visibility, adjust as needed */
+    width: auto; /* Maintain aspect ratio */
+    filter: brightness(0.8); /* Slightly dim the logo for better contrast on dark background */
+    transition: filter 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the logo */
+footer img:hover {
+    filter: brightness(1); /* Brighten the logo on hover */
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+    footer {
+        flex-direction: row; /* Layout items in a row on larger screens */
+        justify-content: center; /* Center items horizontally */
+        gap: 0.75rem; /* Space between the paragraph and the link */
+        padding: 1.5rem 2rem; /* Adjust padding for wider screens */
+    }
+
+    footer p {
+        margin-bottom: 0; /* Remove bottom margin when in a row */
+    }
+}
+
+/* Optional: CSS Variables for easier theming */
+:root {
+    --footer-bg-color: #1a202c;
+    --footer-text-color: #e2e8f0;
+    --footer-border-color: #2d3748;
+    --footer-font-size: 0.95rem;
+    --logo-dim-filter: brightness(0.8);
+    --logo-bright-filter: brightness(1);
+}
+
+footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    border-top: 1px solid var(--footer-border-color);
+    font-size: var(--footer-font-size);
+}
+
+footer img {
+    filter: var(--logo-dim-filter);
+}
+
+footer img:hover {
+    filter: var(--logo-bright-filter);
 }
